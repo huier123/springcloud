@@ -5,6 +5,7 @@ spring:
 server:
   port: 8200
 
+locationhost: localhost
   #eureka≈‰÷√
 eureka:
   client:
@@ -14,4 +15,9 @@ eureka:
     fetch-registry: true
     service-url:
       #µ•ª˙≈‰÷√
-      defaultZone: http://localhost:8000/eureka
+      defaultZone: http://${locationhost}:8000/eureka
+
+
+feign:
+  springcloud:
+    producerurl: http://${locationhost}:8100
