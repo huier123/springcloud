@@ -5,8 +5,13 @@ spring:
 server:
   port: 8100
 
-  #eureka配置
+#eureka配置
 eureka:
+  instance:
+    #服务名称修改
+    instance-id: springcloud-producer
+    #访问路径可以显示ip地址
+    prefer-ip-address: true
   client:
     #表示是否将自己注册进eureka  默认为true
     register-with-eureka: true
@@ -14,7 +19,10 @@ eureka:
     fetch-registry: true
     service-url:
       #单机配置
-      defaultZone: http://localhost:8000/eureka
+      defaultZone: http://localeureka01.com:8000/eureka,http://localeureka02.com:8001/eureka
+
+
+
 
 
 

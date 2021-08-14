@@ -1,17 +1,15 @@
 server:
-  port: 8000
+  port: 8001
 
 spring:
   application:
-    name: springcloud-eureka01
+    name: springcloud-eureka02
 
 eureka:
   instance:
-    hostname: localeureka01.com
+    hostname: localeureka02.com
   client:
     register-with-eureka: false #false表示不向注册中心注册自己。
     fetch-registry: false       #false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
     service-url:
-      defaultZone: http://localeureka02.com:8001/eureka/
-
-
+      defaultZone: http://localeureka01.com:8000/eureka/
