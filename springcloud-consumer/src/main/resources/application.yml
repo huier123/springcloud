@@ -25,3 +25,16 @@ eureka:
 feign:
   springcloud:
     producerurl: http://localhost:8100
+
+
+management:
+  server:
+    servlet:
+      context-path: /
+  endpoint:
+    health:
+      show-details: always
+  web:
+    exposure:
+      include: "*"
+      exclude: env
