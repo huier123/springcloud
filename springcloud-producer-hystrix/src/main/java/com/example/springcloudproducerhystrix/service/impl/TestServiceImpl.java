@@ -29,7 +29,11 @@ public class TestServiceImpl implements TestService {
      */
     @Override
     @HystrixCommand(fallbackMethod = "paymentInfo_TimeOutHabdler",commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3")
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3"),
+            @HystrixProperty(name = "circuitBreaker.enabled",value = "true"),// 是否开启断路器
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold",value = "10"),// 请求次数
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds",value = "10000"), // 时间窗口期
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage",value = "60"),// 失败率达到多少后跳闸
     } )
     public String paymentInfo_TimeOut(Integer id) {
         int timeNumber = 5;
