@@ -1,0 +1,35 @@
+server:
+  port: 10000
+
+spring:
+  application:
+    name: springcloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 开启从注册中心动态创建路由的功能，利用微服务名称j进行路由
+      routes:
+#        - id: springcloud-producer
+#          uri: http://localhost:8100
+#          predicates:
+#            - Path=/testController/** # 断言，路径相匹配的进行路由
+        - id: springcloud-producer2
+          uri: lb://SPRINGCLOUD-PRODUCER
+          predicates:
+            - Path=/testController/** # 断言，路径相匹配的进行路由
+
+
+
+
+eureka:
+  instance:
+    instance-id: springcloud-gateway
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      #单机配置
+      defaultZone: http://localeureka01.com:8000/eureka,http://localeureka02.com:8001/eureka
+
+
